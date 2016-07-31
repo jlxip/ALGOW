@@ -15,3 +15,11 @@
 		--
 	}
 }
+.nouse "No te comes tu caca, seguro?" {
+	_nouseyes = "Si" {
+		--
+	}
+	_nouseno = "No" {
+		++
+	}
+}

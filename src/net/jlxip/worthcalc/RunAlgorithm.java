@@ -15,11 +15,16 @@ public class RunAlgorithm {
 	LoadAlgorithm load;
 	ArrayList<List<String>> questions;
 	
+	public int points;
+	
 	Pattern hash_pattern = Pattern.compile(Pattern.quote("#"));
+	Pattern plus_pattern = Pattern.compile(Pattern.quote("+"));
+	Pattern less_pattern = Pattern.compile(Pattern.quote("-"));
 	
 	public RunAlgorithm(ConsoleSystemInterface csi, LoadAlgorithm load) {
 		this.csi = csi;
 		this.load = load;
+		points = 0;
 	}
 	
 	public void executeCommand(String command) {
@@ -36,14 +41,16 @@ public class RunAlgorithm {
 				JOptionPane.showMessageDialog(null, hash_pattern.split(command)[1]+" question not found. Exiting.");
 				System.exit(1);
 			}
+			
+			executeQuestion(question);
+		} else if(plus_pattern.split(command).length>1){
+			int add = Integer.parseInt(plus_pattern.split(command)[1]);
+			points = points + add;
+		} else if(less_pattern.split(command).length>1) {
+			int take = Integer.parseInt(less_pattern.split(command)[1]);
+			points = points - take;
 		} else {
 			switch(command) {
-				case "++":
-					
-					break;
-				case "--":
-					
-					break;
 				case "end":
 					
 					break;
@@ -84,7 +91,7 @@ public class RunAlgorithm {
 					num = key.code - 117;
 				}
 				num--;	// This' because we added 1 before
-				if(num > 0 && num < options.size()) {
+				if(num >= 0 && num < options.size()) {
 					stop = true;
 					
 					ArrayList<String> commands = load.getCommands(options.get(num));
