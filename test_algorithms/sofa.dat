@@ -1,0 +1,259 @@
+.start "Is she interested in the film?" {
+	_startyes "Yes" {
+		#actor
+	}
+	_startnotmuch "A little" {
+		#animalitos
+	}
+	_startno "No" {
+		#plazas
+	}
+}
+.actor "Is in the film her favourite actor?" {
+	_actoryes "Yes" {
+		end "You cannot compare. You have lost her."
+	}
+	_actorno "No" {
+		#plazas
+	}
+}
+.animalitos "Are there cute animals in the film?" {
+	_animalitosyes "Yes" {
+		end "You cannot compare. You have lost her."
+	}
+	_animalitosno "No" {
+		#plazas
+	}
+}
+
+
+.plazas "How many seats are there in the sofa?" {
+	_plazas1 "1" {
+		+1
+		#shoes
+	}
+	_plazas2 "2" {
+		#shoes
+	}
+	_plazas3 "3" {
+		#longfilm
+	}
+}
+.longfilm "Is the film long?" {
+	_longfilmno "No" {
+		-1
+		#shoes
+	}
+	_longfilmyes "Yes" {
+		#shoes
+	}
+}
+
+
+.shoes "Does she remove her shoes?" {
+	_shoesyes "Yes" {
+		#bestfriend
+	}
+	_shoesno "No" {
+		-1
+		#bestfriend
+	}
+}
+
+
+.bestfriend "How many times has she said that you are 'her best friend'" {
+	_bestfriend0 "0" {
+		#sex
+	}
+	_bestfriend1 "Once serious" {
+		-1
+		<=-3 end "Change a little bit the bases for playing again"
+		>-3 #tumbar
+	}
+	_bestfriend5 "Five times in a short time" {
+		-2
+		<=-3 end "Change a little bit the bases for playing again"
+		>-3 #tumbar
+	}
+	_bestfriend10 "10+ times" {
+		-3
+		<=-3 end "Change a little bit the bases for playing again"
+		>-3 #tumbar
+	}
+}
+.sex "Have you ever had sex?" {
+	_sexno "No" {
+		<=-3 end "Change a little bit the bases for playing again"
+		>-3 #tumbar
+	}
+	_sexyes "Yes" {
+		#drunk
+	}
+}
+.drunk "Drunk?" {
+	_drunkyes "Yes" {
+		-1
+		<=-3 end "Change a little bit the bases for playing again"
+		>-3 #tumbar
+	}
+	_drunkno "No" {
+		+2
+		<=-3 end "Change a little bit the bases for playing again"
+		>-3 #tumbar
+	}
+}
+
+
+.tumbar "Say to her: you can lie if you want" {
+	_tumbarok "She: OK" {
+		#erection
+	}
+	_tumbarno "'I am good right now'" {
+		end "The sofa makes huge"
+	}
+}
+
+
+.erection "Do you have an erection?" {
+	_erectionyes "Yes" {
+		end "You can leave her blind!"
+	}
+	_erectionno "No" {
+		#apoya
+	}
+}
+
+
+.apoya "What does she rests on your lap?" {
+	_apoyapies "Feet" {
+		#critic
+	}
+	_apoyacabeza "Head" {
+		+1
+		#critic
+	}
+	_apoyatronco "Trunk" {
+		+2
+		#critic
+	}
+	_apoyanada "Nothing" {
+		-1
+		#critic
+	}
+}
+
+
+.critic "CRITICAL STAGE! In a NATURAL position, rest your arm on her." {
+	_criticcontinue "Continue" {
+		#forzada
+	}
+}
+
+
+.forzada "Is your arm in an awkward position?" {
+	_forzadano "No" {
+		#clothes
+	}
+	_forzadasi "Yes" {
+		-1
+		#recolocarse
+	}
+}
+.recolocarse "Try again without moving her. Now?" {
+	_recolocarseya "Yes" {
+		#clothes
+	}
+	_recolocarseno "No" {
+		-1
+		#extralife
+	}
+}
+.extralife "EXTRA LIFE: Go to the loo or the kitchen" {
+	_extralifecontinue "Continue" {
+		#recolocarse
+	}
+}
+
+
+.clothes "What kind of clothes is she wearing?" {
+	_clothes2much "Too many buttons and zippers" {
+		-1
+		#friegas
+	}
+	_clothespijama "Elastic clothes and/or pijama" {
+		+1
+		#friegas
+	}
+	_clothesmulti "Multi layer" {
+		#friegas
+	}
+}
+
+
+.friegas "Can your hand make innocent pettings where it is?" {
+	_friegasyes "Yes" {
+		+1
+		#10minutes
+	}
+	_friegasno "No" {
+		#masaje
+	}
+}
+.10minutes "Stay 10 minutes quiet. Relax and patience." {
+	_10minutescontinue "Continue" {
+		#extragame
+	}
+}
+.extragame "EXTRA GAME: Hand on leg" {
+	_extragamecosquillas "Tickle" {
+		-1
+		#masaje
+	}
+	_extragamedepilada "Not depilated" {
+		-3
+		#masaje
+	}
+	_extragameronroneo "Purr" {
+		+2
+		#masaje
+	}
+}
+
+
+.masaje "Say: 'Do you want a massage?'" {
+	_masajesi "Yes" {
+		#masaje2
+	}
+	_masajeno "No" {
+		-2
+		<=-3 end "Sorry, you have to be more decided."
+		>-3 #newerection
+	}
+}
+.masaje2 "Where?" {
+	_masaje2cervicales "Neck and shoulders" {
+		+1
+		<=-3 end "Sorry, you have to be more decided."
+		>-3 #newerection
+	}
+	_masaje2hair "Head and hair" {
+		+2
+		<=-3 end "Sorry, you have to be more decided."
+		>-3 #newerection
+	}
+}
+
+
+.newerection "Do you have an erection?" {
+	_newerectionyes "Yes" {
+		end "Sorry mate."
+	}
+	_newerectionno "No" {
+		#tumbate
+	}
+}
+
+
+.tumbate "Do you mind if I lie too?" {
+	
+}
