@@ -1,0 +1,9 @@
+.start "Use?" {
+	_useyes "Yes" {
+		++
+		#caca
+	}
+	_useno "No!" {
+		#nouse
+	}
+}
