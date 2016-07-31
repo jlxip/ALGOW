@@ -17,14 +17,35 @@ public class RunAlgorithm {
 	
 	public int points;
 	
+	// PATTERN AREA
 	Pattern hash_pattern = Pattern.compile(Pattern.quote("#"));
 	Pattern plus_pattern = Pattern.compile(Pattern.quote("+"));
 	Pattern less_pattern = Pattern.compile(Pattern.quote("-"));
+	Pattern end_pattern = Pattern.compile(Pattern.quote("end "));
+	Pattern quote_pattern = Pattern.compile(Pattern.quote("\""));
+	Pattern double_equals_pattern = Pattern.compile(Pattern.quote("=="));
+	Pattern morethan_pattern = Pattern.compile(Pattern.quote(">"));
+	Pattern lessthan_pattern = Pattern.compile(Pattern.quote("<"));
+	Pattern equals_pattern = Pattern.compile(Pattern.quote("="));
+	Pattern space_pattern = Pattern.compile(Pattern.quote(" "));
+	// END PATTERN AREA
 	
 	public RunAlgorithm(ConsoleSystemInterface csi, LoadAlgorithm load) {
 		this.csi = csi;
 		this.load = load;
 		points = 0;
+	}
+	
+	public String newCommand(String[] spaces) {
+		String newcommand = "";
+		for(int i=1;i<spaces.length;i++) {
+			if(i==spaces.length-1) {
+				newcommand += spaces[1];
+			} else {
+				newcommand += spaces[1] + " ";
+			}
+		}
+		return newcommand;
 	}
 	
 	public void executeCommand(String command) {
@@ -49,11 +70,58 @@ public class RunAlgorithm {
 		} else if(less_pattern.split(command).length>1) {
 			int take = Integer.parseInt(less_pattern.split(command)[1]);
 			points = points - take;
+		} else if(end_pattern.split(command).length>1) {
+			csi.cls();
+			
+			String end_message = quote_pattern.split(command)[1];
+			int end_message_x = (80 - end_message.length()) / 2;
+			int end_message_y = 12;
+			csi.print(end_message_x, end_message_y, end_message, CSIColor.WHITE);
+			
+			String enter = "Hit Enter to exit";
+			int enter_x = (80 - enter.length()) / 2;
+			int enter_y = 18;
+			csi.print(enter_x, enter_y, enter, CSIColor.GREEN);
+			
+			csi.refresh();
+		} else if(double_equals_pattern.split(command).length>1) {
+			String[] spaces = space_pattern.split(command);
+			int num = Integer.valueOf(double_equals_pattern.split(spaces[0])[1]);
+			
+			if(points==num) {
+				String newcommand = newCommand(spaces);
+				executeCommand(newcommand);
+			}
+		} else if(morethan_pattern.split(command).length>1) {
+			String[] spaces = space_pattern.split(command);
+			int num;
+			
+			if(equals_pattern.split(command).length>1) {
+				// >=
+				num = Integer.valueOf(equals_pattern.split(spaces[0])[1]);
+			} else {
+				// >
+				num = Integer.valueOf(morethan_pattern.split(spaces[0])[1]);
+			}
+			
+			String newcommand = newCommand(spaces);
+			executeCommand(newcommand);
+		} else if(lessthan_pattern.split(command).length>1) {
+			String[] spaces = space_pattern.split(command);
+			int num;
+			
+			if(equals_pattern.split(command).length>1) {
+				// <=
+				num = Integer.valueOf(equals_pattern.split(spaces[0])[1]);
+			} else {
+				// <
+				num = Integer.valueOf(lessthan_pattern.split(spaces[0])[1]);
+			}
+			
+			String newcommand = newCommand(spaces);
+			executeCommand(newcommand);
 		} else {
 			switch(command) {
-				case "end":
-					
-					break;
 				case "":
 					break;
 				default:
