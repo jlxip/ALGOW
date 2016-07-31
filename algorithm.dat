@@ -7,3 +7,11 @@
 		#nouse
 	}
 }
+.caca "Menuda caca" {
+	_comecaca "Comerte tu caca" {
+		++
+	}
+	_nocomecaca "No comerte tu caca" {
+		--
+	}
+}

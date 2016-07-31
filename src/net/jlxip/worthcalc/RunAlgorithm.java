@@ -61,10 +61,15 @@ public class RunAlgorithm {
 		
 		csi.cls();
 		
+		String Squestion = question.get(1);
+		int Squestion_x = (80 - Squestion.length()) / 2;	// We might put here just 1 later...
+		int Squestion_y = 1;
+		csi.print(Squestion_x, Squestion_y, Squestion, CSIColor.LIGHT_LIME);
+		
 		for(int i=0;i<options.size();i++) {
 			String option = "-"+(i+1)+". "+options.get(i).get(1);
 			int option_x = 1;
-			int option_y = i+1;
+			int option_y = i+2;
 			csi.print(option_x, option_y, option, CSIColor.WHITE);
 		}
 		
@@ -73,9 +78,13 @@ public class RunAlgorithm {
 		Boolean stop = false;
 		while(!stop) {
 			CharKey key = csi.inkey();
-			if(key.isAlphaNumeric()){
-				int num = key.code - 117;
-				if(num < 10 && num < options.size()) {	// "< 10" MIGHT BE POINTLESS
+			if(key.code >= 117 && key.code <= 139){
+				int num = key.code - 130;
+				if(num < 0) {
+					num = key.code - 117;
+				}
+				num--;	// This' because we added 1 before
+				if(num > 0 && num < options.size()) {
 					stop = true;
 					
 					ArrayList<String> commands = load.getCommands(options.get(num));
