@@ -95,31 +95,39 @@ public class RunAlgorithm {
 		} else if(morethan_pattern.split(command).length>1) {
 			String[] spaces = space_pattern.split(command);
 			int num;
+			String newcommand = newCommand(spaces);
 			
 			if(equals_pattern.split(command).length>1) {
 				// >=
 				num = Integer.valueOf(equals_pattern.split(spaces[0])[1]);
+				if(points>=num) {
+					executeCommand(newcommand);
+				}
 			} else {
 				// >
 				num = Integer.valueOf(morethan_pattern.split(spaces[0])[1]);
+				if(points>num) {
+					executeCommand(newcommand);
+				}
 			}
-			
-			String newcommand = newCommand(spaces);
-			executeCommand(newcommand);
 		} else if(lessthan_pattern.split(command).length>1) {
 			String[] spaces = space_pattern.split(command);
 			int num;
+			String newcommand = newCommand(spaces);
 			
 			if(equals_pattern.split(command).length>1) {
 				// <=
 				num = Integer.valueOf(equals_pattern.split(spaces[0])[1]);
+				if(points<=num) {
+					executeCommand(newcommand);
+				}
 			} else {
 				// <
 				num = Integer.valueOf(lessthan_pattern.split(spaces[0])[1]);
+				if(points<num) {
+					executeCommand(newcommand);
+				}
 			}
-			
-			String newcommand = newCommand(spaces);
-			executeCommand(newcommand);
 		} else {
 			switch(command) {
 				case "":
