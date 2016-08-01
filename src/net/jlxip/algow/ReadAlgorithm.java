@@ -1,4 +1,4 @@
-package net.jlxip.worthcalc;
+package net.jlxip.algow;
 
 import java.io.BufferedReader;
 import java.io.File;

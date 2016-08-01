@@ -1,4 +1,4 @@
-package net.jlxip.worthcalc;
+package net.jlxip.algow;
 
 import java.util.ArrayList;
 import java.util.Properties;
@@ -24,7 +24,7 @@ public class Main {
 		
 		csi.cls();
 		
-		String worthcalc = "WORTH CALC";
+		String worthcalc = "AGLOW";
 		int worthcalc_x = (80 - worthcalc.length()) / 2;
 		int worthcalc_y = 8;
 		csi.print(worthcalc_x, worthcalc_y, worthcalc, CSIColor.WHITE);

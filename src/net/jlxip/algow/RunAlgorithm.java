@@ -1,4 +1,4 @@
-package net.jlxip.worthcalc;
+package net.jlxip.algow;
 
 import java.util.ArrayList;
 import java.util.List;
