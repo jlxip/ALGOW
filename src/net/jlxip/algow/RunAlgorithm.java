@@ -40,9 +40,9 @@ public class RunAlgorithm {
 		String newcommand = "";
 		for(int i=1;i<spaces.length;i++) {
 			if(i==spaces.length-1) {
-				newcommand += spaces[1];
+				newcommand += spaces[i];
 			} else {
-				newcommand += spaces[1] + " ";
+				newcommand += spaces[i] + " ";
 			}
 		}
 		return newcommand;
