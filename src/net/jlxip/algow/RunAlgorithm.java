@@ -142,7 +142,7 @@ public class RunAlgorithm {
 				case "":
 					break;
 				default:
-					JOptionPane.showMessageDialog(null, "Unknown command: "+command);	// TODO: "In question x, option y"
+					JOptionPane.showMessageDialog(null, "Unknown command: "+command);
 					break;
 			}
 		}
