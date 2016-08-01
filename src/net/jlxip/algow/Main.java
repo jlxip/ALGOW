@@ -1,3 +1,9 @@
+/*
+ * TODO: REMOVE OPTIONS NAME
+ * TODO: ALLOW UTF-8 CHARACTERS
+ * TODO: INCLUDE OTHER FILES
+ * */
+
 package net.jlxip.algow;
 
 import java.util.ArrayList;
