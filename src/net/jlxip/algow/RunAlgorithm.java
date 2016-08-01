@@ -159,7 +159,7 @@ public class RunAlgorithm {
 		csi.print(Squestion_x, Squestion_y, Squestion, CSIColor.LIGHT_LIME);
 		
 		for(int i=0;i<options.size();i++) {
-			String option = "-"+(i+1)+". "+options.get(i).get(1);
+			String option = "-"+(i+1)+". "+options.get(i).get(0);
 			int option_x = 1;
 			int option_y = i+2;
 			csi.print(option_x, option_y, option, CSIColor.WHITE);

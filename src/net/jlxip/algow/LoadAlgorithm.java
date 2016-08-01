@@ -65,16 +65,14 @@ public class LoadAlgorithm {
 			String[] underscores = underscore_pattern.split(clearLine);
 			if(underscores.length>1) {
 				String restofline = underscores[1];
-				String option_name = space_pattern.split(restofline)[0];
 				String option_caption = quote_pattern.split(restofline)[1];
 				ArrayList<String> option = new ArrayList<String>();
-				option.add(option_name);
 				option.add(option_caption);
 				option.add(String.valueOf(i));
 				gotOptions.add(option);
 			} else {
 				if(clearLine.equals("}")) {
-					int declaration_line = Integer.parseInt(gotOptions.get(gotOptions.size()-1).get(2));
+					int declaration_line = Integer.parseInt(gotOptions.get(gotOptions.size()-1).get(1));
 					String content = "";
 					for(int j=declaration_line+1;j<i;j++) {
 						if(j==i-1) {
@@ -89,7 +87,7 @@ public class LoadAlgorithm {
 		}
 		
 		for(int i=0;i<gotOptions.size();i++) {	// Error check :D
-			if(gotOptions.get(i).size() == 3) {
+			if(gotOptions.get(i).size() == 2) {
 				JOptionPane.showMessageDialog(null, "No commands found in "+gotOptions.get(i).get(0));
 			}
 		}
@@ -100,7 +98,7 @@ public class LoadAlgorithm {
 	public ArrayList<String> getCommands(List<String> option) {
 		ArrayList<String> gotCommands = new ArrayList<String>();
 		
-		String lines[] = endline_pattern.split(option.get(3));
+		String lines[] = endline_pattern.split(option.get(2));
 		for(int i=0;i<lines.length;i++) {
 			String clearLine = lines[i].replace("\t", "");
 			gotCommands.add(clearLine);
