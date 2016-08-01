@@ -64,13 +64,13 @@ public class RunAlgorithm {
 			}
 			
 			executeQuestion(question);
-		} else if(plus_pattern.split(command).length>1){
+		} else if(command.toCharArray()[0]=='+'){
 			int add = Integer.parseInt(plus_pattern.split(command)[1]);
 			points = points + add;
-		} else if(less_pattern.split(command).length>1) {
+		} else if(command.toCharArray()[0]=='-') {
 			int take = Integer.parseInt(less_pattern.split(command)[1]);
 			points = points - take;
-		} else if(end_pattern.split(command).length>1) {
+		} else if(space_pattern.split(command)[0].equals("end")) {
 			csi.cls();
 			
 			String end_message = quote_pattern.split(command)[1];
@@ -84,6 +84,15 @@ public class RunAlgorithm {
 			csi.print(enter_x, enter_y, enter, CSIColor.GREEN);
 			
 			csi.refresh();
+			
+			Boolean stop = false;
+			while(!stop) {
+				CharKey key = csi.inkey();
+				if(key.code == CharKey.ENTER){
+					stop = true;
+				}
+			}
+			System.exit(0);
 		} else if(double_equals_pattern.split(command).length>1) {
 			String[] spaces = space_pattern.split(command);
 			int num = Integer.valueOf(double_equals_pattern.split(spaces[0])[1]);

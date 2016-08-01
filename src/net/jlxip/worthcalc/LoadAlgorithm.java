@@ -15,6 +15,7 @@ public class LoadAlgorithm {
 	Pattern quote_pattern = Pattern.compile(Pattern.quote("\""));
 	Pattern endline_pattern = Pattern.compile(Pattern.quote("\n"));
 	Pattern underscore_pattern = Pattern.compile(Pattern.quote("_"));
+	Pattern openbracket_pattern = Pattern.compile(Pattern.quote("{"));
 	// END PATTERN AREA
 	
 	public LoadAlgorithm(ArrayList<String> algorithm) {
@@ -28,6 +29,7 @@ public class LoadAlgorithm {
 			String[] dots = dot_pattern.split(algorithm.get(i));
 			if(dots.length>1) {
 				String line = dots[1];
+				line = openbracket_pattern.split(line)[0];
 				String question_name = space_pattern.split(line)[0];
 				String question_caption = quote_pattern.split(line)[1];
 				ArrayList<String> question = new ArrayList<String>();
