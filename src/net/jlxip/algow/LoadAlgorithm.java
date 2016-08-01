@@ -27,7 +27,7 @@ public class LoadAlgorithm {
 		
 		for(int i=0;i<algorithm.size();i++) {
 			String[] dots = dot_pattern.split(algorithm.get(i));
-			if(dots.length>1) {
+			if(algorithm.get(i).toCharArray()[0]=='.') {
 				String line = dots[1];
 				line = openbracket_pattern.split(line)[0];
 				String question_name = space_pattern.split(line)[0];
