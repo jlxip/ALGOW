@@ -9,12 +9,15 @@ import net.slashie.libjcsi.ConsoleSystemInterface;
 import net.slashie.libjcsi.wswing.WSwingConsoleInterface;
 
 public class Main {
+	public static final String fontSize = "18"; 
+	public static final String font = "Courier";
+	
 	public ConsoleSystemInterface csi;
 	
 	public Main() {
 		Properties text = new Properties();
-		text.setProperty("fontSize", "18");
-		text.setProperty("font", "Courier");
+		text.setProperty("fontSize", fontSize);
+		text.setProperty("font", font);
 		
 		try {
 			csi = new WSwingConsoleInterface("", text);
