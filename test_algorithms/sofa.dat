@@ -255,5 +255,49 @@
 
 
 .tumbate "Do you mind if I lie too?" {
+	_tumbatesi "Of course" {
+		#critic2
+	}
+	_tumbateno "We're OK now" {
+		-2
+		#extralifetumbate
+	}
+}
+.extralifetumbate "EXTRA LIFE: Go to the loo or the kitchen" {
+	_extralifetumbateno "She doesn't rest in you again" {
+		end "Sorry mate"
+	}
+	_extralifetumbatesi "Closer position" {
+		#critic2
+	}
+}
+.critic2 "CRITIC TIME: Arm on her belly/hip" {
+	_critic2quita "She removes her arm" {
+		end "You won't see the end of the film"
+	}
+	_critic2permite "She allows it" {
+		#microaprox
+	}
+	_critic2coge "She put it in her hands (CAUTION: she can be in best-friend mode)" {
+		+1
+		#microaprox
+	}
+}
+
+
+.microaprox "Micro-aproximation with the body" {
+	_microaproxok "Good received" {
+		+1
+		#microaproxpoints
+	}
+	_microaproxpasiva "Passive" {
+		#microaproxpoints
+	}
+	_microaproxrechazada "Denied with distance" {
+		-1
+		#microaproxpena
+	}
+}
+.microaproxpena "" {
 	
 }
