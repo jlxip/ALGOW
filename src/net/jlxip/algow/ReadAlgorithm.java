@@ -23,25 +23,23 @@ public class ReadAlgorithm {
 			String lastLine = "";
 			while((lastLine = BRalgorithm.readLine()) != null) {
 				if(!lastLine.equals("")) {	// With this we remove empty lines
-					if(lastLine.toCharArray()[0] != '*') {	// With this we remove commentaries
-						if(lastLine.toCharArray()[0]=='@') {
-							String includedName = at_pattern.split(lastLine)[1];
-							String Sinclude = "alg"+File.separator+includedName;
-							if(dotalg_pattern.split(includedName+" ").length<=1) {
-								// DOESN'T HAVE THE EXTENSION
-								Sinclude += ".alg";
-							}
-							File Finclude = new File(Sinclude);
-							
-							if(!Finclude.exists()) {
-								JOptionPane.showMessageDialog(null, Sinclude+" file not found. Exiting.");
-								System.exit(1);
-							}
-							
-							readFile(Finclude);
-						} else {
-							algorithm.add(lastLine);
+					if(lastLine.toCharArray()[0]=='@') {
+						String includedName = at_pattern.split(lastLine)[1];
+						String Sinclude = "alg"+File.separator+includedName;
+						if(dotalg_pattern.split(includedName+" ").length<=1) {
+							// DOESN'T HAVE THE EXTENSION
+							Sinclude += ".alg";
 						}
+						File Finclude = new File(Sinclude);
+						
+						if(!Finclude.exists()) {
+							JOptionPane.showMessageDialog(null, Sinclude+" file not found. Exiting.");
+							System.exit(1);
+						}
+						
+						readFile(Finclude);
+					} else {
+						algorithm.add(lastLine);
 					}
 				}
 				

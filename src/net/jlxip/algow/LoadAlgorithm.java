@@ -101,7 +101,9 @@ public class LoadAlgorithm {
 		String lines[] = endline_pattern.split(option.get(2));
 		for(int i=0;i<lines.length;i++) {
 			String clearLine = lines[i].replace("\t", "");
-			gotCommands.add(clearLine);
+			if(clearLine.toCharArray()[0] != '*') {	// With this we remove commentaries
+				gotCommands.add(clearLine);
+			}
 		}
 		
 		return gotCommands;
