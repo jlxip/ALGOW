@@ -1,7 +1,3 @@
-/*
- * TODO: INCLUDE OTHER FILES
- * */
-
 package net.jlxip.algow;
 
 import java.util.ArrayList;
