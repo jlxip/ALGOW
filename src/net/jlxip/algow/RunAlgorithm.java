@@ -70,6 +70,28 @@ public class RunAlgorithm {
 		} else if(command.toCharArray()[0]=='-') {
 			int take = Integer.parseInt(less_pattern.split(command)[1]);
 			points = points - take;
+		} else if(space_pattern.split(command)[0].equals("do")) {
+			csi.cls();
+			
+			String do_message = quote_pattern.split(command)[1];
+			int do_message_x = (80 - do_message.length()) / 2;
+			int do_message_y = 12;
+			csi.print(do_message_x, do_message_y, do_message, CSIColor.WHITE);
+			
+			String enter = "Hit Enter to continue";
+			int enter_x = (80 - enter.length()) / 2;
+			int enter_y = 18;
+			csi.print(enter_x, enter_y, enter, CSIColor.GREEN);
+			
+			csi.refresh();
+			
+			Boolean stop = false;
+			while(!stop) {
+				CharKey key = csi.inkey();
+				if(key.code == CharKey.ENTER) {
+					stop = true;
+				}
+			}
 		} else if(space_pattern.split(command)[0].equals("end")) {
 			csi.cls();
 			

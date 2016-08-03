@@ -53,15 +53,18 @@ There are only a few basic commands in ALGOWL, but there should be enoguh for an
 All of them need NO space between the command and the parameter. Have caution with that.<br>
 <br>
 
-First of all, the command by excellence. This is called redirector. It's used with a hash sign (' # '), followed by the name of the question. For example: #likesicecream<br>
+First of all, the command by excellence. This is called redirector. It's used with a hash sign (' # '), followed by the name of the question. E.g.: #likesicecream<br>
 <br>
 
 Then we have the commands that modify the variable:<br>
-In one hand, we have the adder. This adds any value to the variable. It's used with a plus sign (' + '), followed by the value to add. For example: +3<br>
-In the other hand, we have the taker. This takes any value to the variable. It's used with a less sign (' - '), followed by the value to take. For example: -2<br>
+In one hand, we have the adder. This adds any value to the variable. It's used with a plus sign (' + '), followed by the value to add. E.g.: +3<br>
+In the other hand, we have the taker. This takes any value to the variable. It's used with a less sign (' - '), followed by the value to take. E.g.: -2<br>
 <br>
 
-By last, we have the "end" command. This command finishes the algorithm with a message that is showed to the user. It's used with the "end" word, followed by a space and the message in quotes.<br>
+There is the "do" command. This command shows a message and continues the algorithm when the user hits ENTER. This can be useful for asking the user to execute some action and then continue. This one can be used with the "do" word, followed by a space and the message in quotes. E.g.: do "Call her"<br>
+<br>
+
+By last, we have the "end" command. This command finishes the algorithm with a message that is showed to the user. It's used with the "end" word, followed by a space and the message in quotes. E.g.: end "Finished. You have to do..."<br>
 <br>
 
 <h2>Conditionals</h2>
