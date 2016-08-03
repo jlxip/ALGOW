@@ -5,6 +5,7 @@ v1.1
 * "algorithm.dat" file changed to a folder called "alg". The main algorithm is now called "start.alg"
 + File imports in an algorithm implemented (with '@' symbol)
 + Commentaries added (with '*' symbol)
++ Now the documentation is in README.md file
 
 v1.0
 + First release! :D
