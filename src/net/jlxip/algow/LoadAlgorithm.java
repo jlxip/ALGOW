@@ -62,8 +62,8 @@ public class LoadAlgorithm {
 		String[] lines = endline_pattern.split(question.get(3));
 		for(int i=0;i<lines.length;i++) {
 			String clearLine = lines[i].replace("\t", "");
-			String[] underscores = underscore_pattern.split(clearLine);
-			if(underscores.length>1) {
+			if(clearLine.toCharArray()[0]=='_') {
+				String[] underscores = underscore_pattern.split(clearLine);
 				String restofline = underscores[1];
 				String option_caption = quote_pattern.split(restofline)[1];
 				ArrayList<String> option = new ArrayList<String>();
@@ -87,7 +87,7 @@ public class LoadAlgorithm {
 		}
 		
 		for(int i=0;i<gotOptions.size();i++) {	// Error check :D
-			if(gotOptions.get(i).size() == 2) {
+			if(gotOptions.get(i).size() == 1) {
 				JOptionPane.showMessageDialog(null, "No commands found in "+gotOptions.get(i).get(0));
 			}
 		}
