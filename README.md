@@ -36,7 +36,7 @@ The options are declared with an underscode (' _ ') followed by a space, and the
 The commands are declared inside the options, and they don't need any declarer.<br>
 <br>
 
-<b>IMPORTANT:</b> The use of horizontal tabs is obligatory, and the syntactic spaces as well. The horizontal tabs CANNOT be replaced with spaces. The program will not work if you don't meet these requirements. Also, it's a good practice to use them in other languages, so this might be profitable for your learning.<br>
+<b>IMPORTANT:</b> The use of horizontal tabs is obligatory, and the syntactic spaces as well. The horizontal tabs can be replaced with spaces, but this is not recommended because spaces are more difficult to see. The program will not work if you don't meet these requirements. Also, it's a good practice to use them in other languages, so this might be profitable for your learning.<br>
 <br>
 
 You can insert commentaries in your ".alg" file using the asterisk sign (' * ') before them.<br>

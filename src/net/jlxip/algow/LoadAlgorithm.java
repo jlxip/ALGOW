@@ -61,7 +61,28 @@ public class LoadAlgorithm {
 		
 		String[] lines = endline_pattern.split(question.get(3));
 		for(int i=0;i<lines.length;i++) {
-			String clearLine = lines[i].replace("\t", "");
+			String clearLine = lines[i].replace("\t", "");	// Remove tabs
+			
+			ArrayList<Character> clearLine2 = new ArrayList<Character>();
+			Boolean stopClearing = false;
+			for(int j=0;j<clearLine.toCharArray().length;j++) {
+				if(!stopClearing) {
+					if(clearLine.toCharArray()[j]!=' ') {	// Remove spaces!
+						stopClearing = true;
+						clearLine2.add(clearLine.toCharArray()[j]);
+					}
+				} else {
+					clearLine2.add(clearLine.toCharArray()[j]);
+				}
+			}
+			
+			char[] clearLine3 = new char[clearLine2.size()];
+			for(int j=0;j<clearLine2.size();j++) {
+				clearLine3[j]=clearLine2.get(j);
+			}
+			
+			clearLine = String.valueOf(clearLine3);
+			
 			if(clearLine.toCharArray()[0]=='_') {
 				String[] underscores = underscore_pattern.split(clearLine);
 				String restofline = underscores[1];
@@ -100,7 +121,27 @@ public class LoadAlgorithm {
 		
 		String lines[] = endline_pattern.split(option.get(2));
 		for(int i=0;i<lines.length;i++) {
-			String clearLine = lines[i].replace("\t", "");
+			String clearLine = lines[i].replace("\t", "");	// Remove tabs
+			
+			ArrayList<Character> clearLine2 = new ArrayList<Character>();
+			Boolean stopClearing = false;
+			for(int j=0;j<clearLine.toCharArray().length;j++) {
+				if(!stopClearing) {
+					if(clearLine.toCharArray()[j]!=' ') {	// Remove spaces!
+						stopClearing = true;
+						clearLine2.add(clearLine.toCharArray()[j]);
+					}
+				} else {
+					clearLine2.add(clearLine.toCharArray()[j]);
+				}
+			}
+			
+			char[] clearLine3 = new char[clearLine2.size()];
+			for(int j=0;j<clearLine2.size();j++) {
+				clearLine3[j]=clearLine2.get(j);
+			}
+			
+			clearLine = String.valueOf(clearLine3);			
 			if(clearLine.toCharArray()[0] != '*') {	// With this we remove commentaries
 				gotCommands.add(clearLine);
 			}
