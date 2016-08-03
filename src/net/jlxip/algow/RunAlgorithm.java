@@ -13,12 +13,14 @@ import net.slashie.libjcsi.ConsoleSystemInterface;
 public class RunAlgorithm {
 	ConsoleSystemInterface csi;
 	LoadAlgorithm load;
+	ArrayList<List<String>> functions;
 	ArrayList<List<String>> questions;
 	
 	public int points;
 	
 	// PATTERN AREA
 	Pattern hash_pattern = Pattern.compile(Pattern.quote("#"));
+	Pattern dollar_pattern = Pattern.compile(Pattern.quote("$"));
 	Pattern plus_pattern = Pattern.compile(Pattern.quote("+"));
 	Pattern less_pattern = Pattern.compile(Pattern.quote("-"));
 	Pattern end_pattern = Pattern.compile(Pattern.quote("end "));
@@ -49,7 +51,7 @@ public class RunAlgorithm {
 	}
 	
 	public void executeCommand(String command) {
-		if(hash_pattern.split(command).length>1) {
+		if(command.toCharArray()[0]=='#') {
 			ArrayList<String> question = null;
 			for(int i=0;i<questions.size();i++) {
 				if(questions.get(i).get(0).equals(hash_pattern.split(command)[1])) {
@@ -64,6 +66,21 @@ public class RunAlgorithm {
 			}
 			
 			executeQuestion(question);
+		} else if(command.toCharArray()[0]=='$') {
+			ArrayList<String> function = null;
+			for (int i=0;i<functions.size();i++) {
+				if(functions.get(i).get(0).equals(dollar_pattern.split(command)[1])) {
+					function = (ArrayList<String>) functions.get(i);
+					break;
+				}
+			}
+			
+			if(function == null) {
+				JOptionPane.showMessageDialog(null, dollar_pattern.split(command)[1]+" function not found. Exiting.");
+				System.exit(1);
+			}
+			
+			executeFunction(function);
 		} else if(command.toCharArray()[0]=='+'){
 			int add = Integer.parseInt(plus_pattern.split(command)[1]);
 			points = points + add;
@@ -170,6 +187,13 @@ public class RunAlgorithm {
 		}
 	}
 	
+	public void executeFunction(ArrayList<String> function) {
+		ArrayList<String> commands = load.getCommands(function);
+		for(int i=0;i<commands.size();i++) {
+			executeCommand(commands.get(i));
+		}
+	}
+	
 	public void executeQuestion(ArrayList<String> question) {
 		ArrayList<List<String>> options = load.getOptions(question);
 		
@@ -212,20 +236,22 @@ public class RunAlgorithm {
 	}
 	
 	public void start() {
-		questions = load.getQuestions();
-		ArrayList<String> startquestion = null;
-		for(int i=0;i<questions.size();i++) {
-			if(questions.get(i).get(0).equals("start")) {
-				startquestion = (ArrayList<String>) questions.get(i);
+		functions = load.getFunctions();
+		ArrayList<String> startfunction = null;
+		for(int i=0;i<functions.size();i++) {
+			if(functions.get(i).get(0).equals("start")) {
+				startfunction = (ArrayList<String>) functions.get(i);
 				break;
 			}
 		}
 		
-		if(startquestion == null) {
-			JOptionPane.showMessageDialog(null, "Start question not found. Exiting.");
+		if(startfunction == null) {
+			JOptionPane.showMessageDialog(null, "Start function not found. Exiting.");
 			System.exit(1);
 		}
 		
-		executeQuestion(startquestion);
+		questions = load.getQuestions();
+		
+		executeFunction(startfunction);
 	}
 }

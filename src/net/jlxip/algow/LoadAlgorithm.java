@@ -11,6 +11,7 @@ public class LoadAlgorithm {
 	
 	// PATTERN AREA
 	Pattern dot_pattern = Pattern.compile(Pattern.quote("."));
+	Pattern colon_pattern = Pattern.compile(Pattern.quote(":"));
 	Pattern space_pattern = Pattern.compile(Pattern.quote(" "));
 	Pattern quote_pattern = Pattern.compile(Pattern.quote("\""));
 	Pattern endline_pattern = Pattern.compile(Pattern.quote("\n"));
@@ -20,6 +21,38 @@ public class LoadAlgorithm {
 	
 	public LoadAlgorithm(ArrayList<String> algorithm) {
 		this.algorithm = algorithm;
+	}
+	
+	public ArrayList<List<String>> getFunctions() {
+		ArrayList<List<String>> gotFunctions = new ArrayList<List<String>>();
+		
+		for(int i=0;i<algorithm.size();i++) {
+			String[] colons = colon_pattern.split(algorithm.get(i));
+			if(algorithm.get(i).toCharArray()[0]==':') {
+				String line = colons[1];
+				line = openbracket_pattern.split(line)[0];
+				String function_name = space_pattern.split(line)[0];
+				ArrayList<String> function = new ArrayList<String>();
+				function.add(function_name);
+				function.add(String.valueOf(i));
+				gotFunctions.add(function);
+			} else {
+				if(gotFunctions.size()!=0 && gotFunctions.get(gotFunctions.size()-1).size()<3 && algorithm.get(i).toCharArray()[0]=='}') {
+					int declaration_line = Integer.parseInt(gotFunctions.get(gotFunctions.size()-1).get(1));
+					String content = "";
+					for(int j=declaration_line+1;j<i;j++) {
+						if(j==i-1) {
+							content += algorithm.get(j);
+						} else {
+							content += algorithm.get(j) + "\n";
+						}
+					}
+					gotFunctions.get(gotFunctions.size()-1).add(content);
+				}
+			}
+		}
+		
+		return gotFunctions;
 	}
 	
 	public ArrayList<List<String>> getQuestions() {
@@ -39,16 +72,18 @@ public class LoadAlgorithm {
 				gotQuestions.add(question);
 			} else {
 				if(algorithm.get(i).equals("}")) {
-					int declaration_line = Integer.parseInt(gotQuestions.get(gotQuestions.size()-1).get(2));
-					String content = "";
-					for(int j=declaration_line+1;j<i;j++) {
-						if(j==i-1) {
-							content += algorithm.get(j);
-						} else {
-							content += algorithm.get(j) + "\n";
+					if(gotQuestions.size()!=0 && gotQuestions.get(gotQuestions.size()-1).size()<4) {
+						int declaration_line = Integer.parseInt(gotQuestions.get(gotQuestions.size()-1).get(2));
+						String content = "";
+						for(int j=declaration_line+1;j<i;j++) {
+							if(j==i-1) {
+								content += algorithm.get(j);
+							} else {
+								content += algorithm.get(j) + "\n";
+							}
 						}
+						gotQuestions.get(gotQuestions.size()-1).add(content);
 					}
-					gotQuestions.get(gotQuestions.size()-1).add(content);
 				}
 			}
 		}
@@ -116,10 +151,11 @@ public class LoadAlgorithm {
 		return gotOptions;
 	}
 	
-	public ArrayList<String> getCommands(List<String> option) {
+	public ArrayList<String> getCommands(List<String> input) {
 		ArrayList<String> gotCommands = new ArrayList<String>();
 		
-		String lines[] = endline_pattern.split(option.get(2));
+		String lines[] = endline_pattern.split(input.get(2));
+		
 		for(int i=0;i<lines.length;i++) {
 			String clearLine = lines[i].replace("\t", "");	// Remove tabs
 			
