@@ -3,7 +3,7 @@ ALGOW (Algorithm Wizard) is a program [made in multi-platform java, Eclipse] whi
 <br>
 
 <h2>How does it work?</h2>
-The main algorithm is read (located in "alg/start."), and shows the main question ("start").<br>
+The main algorithm is read (located in "alg/start.alg"), and shows the main question ("start").<br>
 A number of options are showed to the user according to that question, and each option has its own code which can be, for example, going to another question.<br>
 <br>
 
@@ -14,7 +14,7 @@ Each algorithm file (stored in the "alg" folder with the ".alg" extension) is co
 
 
 <h1>ALGOWL</h1>
-ALGOWL (ALGOW Language) is the language with which all the algorithms for ALGOW are written. It's very easy to understand and it's not very different from XML.<br>
+ALGOWL (ALGOW Language) is the language with which all the algorithms for ALGOW are written. It's easy to understand and it's not very different from XML.<br>
 <br>
 
 <h2>The basics</h2>
@@ -28,7 +28,7 @@ When you are creating an algorithm the first thing you have to do is create the 
 <br>
 
 <h2>Syntax</h2>
-All ".alg" written in ALGOWL follow the same syntax. An algorithm is composed of questions. Each question is composed of one or more options (up to 9, enough for a single question). And each option is composed of one or more commands. Seems easy right? Well, it is.<br>
+All ".alg" files written in ALGOWL follow the same syntax. An algorithm is composed of questions. Each question is composed of one or more options (up to 9, enough for a single question). And each option is composed of one or more commands. Seems easy right? Well, it is.<br>
 <br>
 
 The questions are declared with a dot (' . ') followed by the (internal) name of the question, then a space and the caption of the question in quotes (' " ').<br>
@@ -36,7 +36,7 @@ The options are declared with an underscode (' _ ') followed by a space, and the
 The commands are declared inside the options, and they don't need any declarer.<br>
 <br>
 
-<b>IMPORTANT:</b> The use of horizontal tabs is obligatory, and the syntactic spaces as well. The horizontal tabs CANNOT be replaced with spaces. The program will not work if you don't meet these requirements. Also, it's a good practice to use them in other languages, so this might be profitable for your learning.<br>
+<b>IMPORTANT:</b> The use of horizontal tabs is obligatory, and the syntactic spaces as well. The horizontal tabs can be replaced with spaces, but this is not recommended because spaces are more difficult to see. The program will not work if you don't meet these requirements. Also, it's a good practice to use them in other languages, so this might be profitable for your learning.<br>
 <br>
 
 You can insert commentaries in your ".alg" file using the asterisk sign (' * ') before them.<br>
@@ -50,21 +50,23 @@ Here it is an example of all the syntax you have read before: http://pastebin.co
 
 <h2>Commands</h2>
 There are only a few basic commands in ALGOWL, but there should be enoguh for any algorithm.<br>
-All of them need NO space between the command and the parameter. Have caution with that.<br>
 <br>
 
-First of all, the command by excellence. This is called redirector. It's used with a hash sign (' # '), followed by the name of the question. For example: #likesicecream<br>
+First of all, the command by excellence. This is called redirector. It's used with a hash sign (' # '), followed by the name of the question. E.g.: #likesicecream<br>
 <br>
 
 Then we have the commands that modify the variable:<br>
-In one hand, we have the adder. This adds any value to the variable. It's used with a plus sign (' + '), followed by the value to add. For example: +3<br>
-In the other hand, we have the taker. This takes any value to the variable. It's used with a less sign (' - '), followed by the value to take. For example: -2<br>
+In one hand, we have the adder. This adds any value to the variable. It's used with a plus sign (' + '), followed by the value to add. E.g.: +3<br>
+In the other hand, we have the taker. This takes any value to the variable. It's used with a less sign (' - '), followed by the value to take. E.g.: -2<br>
 <br>
 
-By last, we have the "end" command. This command finishes the algorithm with a message that is showed to the user. It's used with the "end" word, followed by a space and the message in quotes.<br>
+The "do" command. This command shows a message and continues the algorithm when the user hits ENTER. This can be useful for asking the user to execute some action and then continue. This one can be used with the "do" word, followed by a space and the message in quotes. E.g.: do "Call her"<br>
 <br>
 
-<h2>Conditionals</h2>
+By last, we have the "end" command. This command finishes the algorithm with a message that is showed to the user. It's used with the "end" word, followed by a space and the message in quotes. E.g.: end "Finished. You have to do..."<br>
+<br>
+
+<h2>Logic operators</h2>
 In this section we will learn the conditionals we can use in ALGWL. There are 5, and all of them are followed by the value to check, a space and the command to do.<br>
 <br>
 
@@ -84,4 +86,4 @@ The less-than or equals conditional. Checks if the variable has less value or it
 <br>
 
 <h2>Example</h2>
-Once you have read the above documentation, you're ready to go! I am giving you an algorithm example, so you will be able to read it and see how the above syntax is applied. Here it is: http://pastebin.com/G8MF2Uiu
+Once you have read the above documentation, you're ready to go! I am giving you an example algorithm, so you will be able to read it and see how the above syntax is applied. Here it is: http://pastebin.com/G8MF2Uiu
