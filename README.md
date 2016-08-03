@@ -3,7 +3,8 @@ ALGOW (Algorithm Wizard) is a program [made in multi-platform java, Eclipse] whi
 <br>
 
 <h2>How does it work?</h2>
-The main algorithm is read (located in "alg/start.alg"), and shows the main question ("start").<br>
+The main algorithm is read (located in "alg/start.alg"), and executes the main function ("start").<br>
+This function executes code, which usually one of the commands is showing the main question.<br>
 A number of options are showed to the user according to that question, and each option has its own code which can be, for example, going to another question.<br>
 <br>
 
@@ -24,16 +25,17 @@ You can make changes and check the value of the variable.<br>
 You can change the value adding or taking any value to that variable (negative values available!).<br>
 You can check the value of the variable using logic operators.<br><br>
 
-When you are creating an algorithm the first thing you have to do is create the main file. This is located in the folder "alg" (if it doesn't exist, open the program and it will be magically created (you can also create it manually)), and it's always called "start.alg", this will be the first algorithm to run. The main algorithm must have the main question ("start"), and as you are probably figuring out, it's the first question to run.<br>
+When you are creating an algorithm the first thing you have to do is create the main file. This is located in the folder "alg" (if it doesn't exist, open the program and it will be magically created (you can also create it manually)), and it's always called "start.alg", this will be the first algorithm to run. The main algorithm must have the main function ("start"), and as you are probably figuring out, it's the first question to run.<br>
 <br>
 
 <h2>Syntax</h2>
-All ".alg" files written in ALGOWL follow the same syntax. An algorithm is composed of questions. Each question is composed of one or more options (up to 9, enough for a single question). And each option is composed of one or more commands. Seems easy right? Well, it is.<br>
+All ".alg" files written in ALGOWL follow the same syntax. An algorithm is composed of functions. Each function is composed of one or more commands. And questions. Each question is composed of one or more options (up to 9, enough for a single question). And each option is composed of one or more commands. Seems easy right? Well, it is.<br>
 <br>
 
+The functions are declared with a colon (' : ') followed by the name of the function.<br>
 The questions are declared with a dot (' . ') followed by the (internal) name of the question, then a space and the caption of the question in quotes (' " ').<br>
 The options are declared with an underscode (' _ ') followed by a space, and the caption of the question in quotes (' " ') (I know I wrote the sign before, but I want to make it clear).<br>
-The commands are declared inside the options, and they don't need any declarer.<br>
+The commands are declared inside the options and functions, and they don't need any declarer.<br>
 <br>
 
 <b>IMPORTANT:</b> The use of horizontal tabs is obligatory, and the syntactic spaces as well. The horizontal tabs can be replaced with spaces, but this is not recommended because spaces are more difficult to see. The program will not work if you don't meet these requirements. Also, it's a good practice to use them in other languages, so this might be profitable for your learning.<br>
@@ -52,7 +54,10 @@ Here it is an example of all the syntax you have read before: http://pastebin.co
 There are only a few basic commands in ALGOWL, but there should be enoguh for any algorithm.<br>
 <br>
 
-First of all, the command by excellence. This is called redirector. It's used with a hash sign (' # '), followed by the name of the question. E.g.: #likesicecream<br>
+First of all, the command by excellence. This is called function redirector. It's used with a dollar sign (' $ '), followed by the name of the function. E.g.: $icecream<br>
+<br>
+
+The question redirector. It's used with a hash sign (' # '), followed by the name of the question. E.g.: #likesicecream<br>
 <br>
 
 Then we have the commands that modify the variable:<br>
