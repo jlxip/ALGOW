@@ -188,7 +188,7 @@ public class RunAlgorithm {
 	}
 	
 	public void executeFunction(ArrayList<String> function) {
-		ArrayList<String> commands = load.getCommands(function, true);
+		ArrayList<String> commands = load.getCommands(function);
 		for(int i=0;i<commands.size();i++) {
 			executeCommand(commands.get(i));
 		}
@@ -225,7 +225,7 @@ public class RunAlgorithm {
 				if(num >= 0 && num < options.size()) {
 					stop = true;
 					
-					ArrayList<String> commands = load.getCommands(options.get(num), false);
+					ArrayList<String> commands = load.getCommands(options.get(num));
 					
 					for(int i=0;i<commands.size();i++) {
 						executeCommand(commands.get(i));

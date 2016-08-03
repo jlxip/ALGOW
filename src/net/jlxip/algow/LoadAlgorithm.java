@@ -151,7 +151,7 @@ public class LoadAlgorithm {
 		return gotOptions;
 	}
 	
-	public ArrayList<String> getCommands(List<String> input, Boolean function) {
+	public ArrayList<String> getCommands(List<String> input) {
 		ArrayList<String> gotCommands = new ArrayList<String>();
 		
 		String lines[] = endline_pattern.split(input.get(2));
